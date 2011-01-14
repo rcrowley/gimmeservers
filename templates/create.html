@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/api/create" method="post">
+<p><label for="name">Server name:</label> <input id="name" name="name" type="text" value=""></p>
+<p><label for="username">Rackspace username:</label> <input id="username" name="username" type="text" value=""></p>
+<p><label for="api_key">Rackspace API key:</label> <input id="api_key" name="api_key" type="text" value=""></p>
+<p><label for="image">OS:</label> <select id="image" name="image">
+{% for id, name in images %}
+	<option value="{{ id }}">{{ name }}</option>
+{% endfor %}
+</select></p>
+<p><label for="size">Size:</label> <select id="size" name="size">
+{% for id, name in sizes %}
+	<option value="{{ id }}">{{ name }}</option>
+{% endfor %}
+</select></p>
+<p><input type="submit" value="I understand that this will result in charges to my Rackspace account, just give me a server"></p>
+<input id="provider" name="provider" type="hidden" value="{{ provider }}"></p>
+</form>
+{% endblock %}
