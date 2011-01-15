@@ -60,7 +60,7 @@ def _mac(provider, id, ip):
 def _url(provider, id, ip):
     ip = struct.unpack('L', socket.inet_aton(ip))[0]
     return '{0}://{1}/{2}-{3}-{4}-{5}'.format('http',
-                                              '33.33.33.33:5000',
+                                              'gimmeservers.com',
                                               provider,
                                               id,
                                               ip,
