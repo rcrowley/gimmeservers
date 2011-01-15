@@ -21,3 +21,43 @@
 <input id="provider" name="provider" type="hidden" value="{{ provider }}">
 </form>
 {% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+$(function() {
+	$("form").submit(function() {
+		$("h1").append(" <img id=\"spin\" src=\"/static/img/spin.gif\">");
+		$.ajax({
+			data: {
+				"api-key": $("#api-key").val(),
+				"image": $("#image").val(),
+				"name": $("#name").val(),
+				"provider": $("#provider").val(),
+				"size": $("#size").val(),
+				"username": $("#username").val()
+			},
+			dataType: "json",
+			error: function(xhr, textStatus, errorThrown) {
+				$("#spin").remove();
+				alert($.parseJSON(xhr.responseText).error);
+			},
+			success: function(data, textStatus, xhr) {
+				$("#spin").remove();
+				$("form").empty().append(
+					"<p><strong>" + data.ip + "</strong> is ready.&nbsp; " +
+					"The root password is <strong>" +
+					data.password + "</strong>.</p>" +
+					"<p>Visit <a href=\"" + data.url + "\">" + data.url +
+					"</a> to destroy it.</p>" +
+					"<hr>" +
+					"<p><a href=\"/\">Gimme another server</a></p>"
+				);
+			},
+			type: "POST",
+			url: $(this).attr("action")
+		});
+		return false;
+	});
+});
+</script>
+{% endblock %}
