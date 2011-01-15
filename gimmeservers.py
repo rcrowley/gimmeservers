@@ -82,7 +82,7 @@ def api_create():
     if 'rax' != request.form['provider']:
         return _api_error(400, 'Provider must be "rax".')
 
-    Driver = get_driver(Provider.RACKSPACE) 
+    Driver = get_driver(Provider.RACKSPACE)
     try:
         conn = Driver(request.form['username'], request.form['api_key']) 
     except InvalidCredsError:
@@ -107,7 +107,7 @@ def api_destroy():
     if 'rax' != request.form['provider']:
         return _api_error(400, 'Provider must be "rax".')
 
-    Driver = get_driver(Provider.RACKSPACE) 
+    Driver = get_driver(Provider.RACKSPACE)
     try:
         conn = Driver(request.form['username'], request.form['api_key']) 
     except InvalidCredsError:
