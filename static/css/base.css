@@ -1,3 +1,5 @@
+header, nav, article, section, aside, footer { display: block; }
+
 * {
 	color: #333;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -74,6 +76,7 @@ input[type=submit].destroy {
 	border-color: #800;
 }
 input[type=submit].destroy:active { background: #900; }
+input[type=hidden] { display: none; }
 
 hr {
 	border: 1px solid #bbb;
