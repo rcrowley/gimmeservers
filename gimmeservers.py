@@ -58,7 +58,7 @@ def _mac(provider, id, ip):
                     hashlib.sha1).hexdigest()
 
 def _url(provider, id, ip):
-    ip = struct.unpack('L', socket.inet_aton(ip))[0]
+    ip = struct.unpack('I', socket.inet_aton(ip))[0]
     return '{0}://{1}/{2}-{3}-{4}-{5}'.format('http',
                                               'gimmeservers.com',
                                               provider,
@@ -137,7 +137,7 @@ def page_create():
 def page_destroy(provider, id, ip, mac):
     if _mac(provider, id, ip) != mac:
         return render_template('404.html'), 404
-    unpacked_ip = socket.inet_ntoa(struct.pack('L', long(ip)))
+    unpacked_ip = socket.inet_ntoa(struct.pack('I', long(ip)))
     return render_template('destroy.html',
                            provider=provider,
                            id=id,
