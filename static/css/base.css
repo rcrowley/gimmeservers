@@ -85,7 +85,14 @@ aside {
 	left: 560px;
 	position: absolute;
 	top: 0;
-	width: 180px;
+	width: 181px;
+}
+
+.devstructure {
+	background: url(/static/img/devstructure.png) no-repeat center top;
+	display: inline-block;
+	padding-top: 72px;
+	text-decoration: none;
 }
 
 footer p { color: #bbb; }
