@@ -1,0 +1,91 @@
+* {
+	color: #333;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+body {
+	background: #f8f8f8;
+	margin: 0;
+	text-align: center;
+}
+div, footer {
+	margin: 32px auto;
+	text-align: left;
+	width: 480px;
+}
+
+div {
+	background: #eee;
+	border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	padding: 16px 32px;
+	position: relative;
+}
+
+header h1 { margin: 0; }
+header h1 a {
+	color: black;
+	font-weight: bold;
+	text-decoration: inherit;
+}
+
+label, input {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+label {
+	text-align: right;
+	width: 170px;
+}
+input, select {
+	background: white;
+	border: 0;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 0 8px;
+	padding: 4px;
+}
+input { width: 294px; }
+select {
+	-webkit-appearance: none;
+	width: 302px;
+}
+input[type=submit] {
+	background: #333;
+	border: 2px solid black;
+	color: white;
+	margin: 0;
+	width: 476px;
+}
+input[type=submit].create {
+	background: #0a0;
+	border-color: #080;
+}
+input[type=submit].create:active { background: #090; }
+input[type=submit].destroy {
+	background: #a00;
+	border-color: #800;
+}
+input[type=submit].destroy:active { background: #900; }
+
+hr {
+	border: 1px solid #bbb;
+	border-width: 1px 0 0 0;
+}
+
+aside {
+	font-size: 12px;
+	left: 560px;
+	position: absolute;
+	top: 0;
+	width: 180px;
+}
+
+footer p { color: #bbb; }
+footer p a { color: #777; }
