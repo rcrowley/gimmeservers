@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>Server IP address: {{ ip }}</p>
 <form action="/api/destroy" method="post">
-<p><label for="id">Server ID:</label><input id="id" name="id" type="text" value="{{ id }}"></p>
+<p><label>Server IP address:</label><strong>{{ unpacked_ip }}</strong></p>
+<p><label for="id">Server ID:</label><strong>{{ id }}</strong></p>
 <p><label for="username">Rackspace username:</label><input id="username" name="username" type="text"></p>
-<p><label for="api_key">Rackspace API key:</label><input id="api_key" name="api_key" type="text"></p>
+<p><label for="api-key">Rackspace API key:</label><input id="api-key" name="api-key" type="text"></p>
 <p><input type="submit" value="Destroy this server and all the data on it" class="destroy"></p>
-<input id="provider" name="provider" type="hidden" value="{{ provider }}"></p>
+<input id="provider" name="provider" type="hidden" value="{{ provider }}">
+<input id="id" name="id" type="hidden" value="{{ id }}">
+<input id="ip" name="ip" type="hidden" value="{{ ip }}">
+<input id="mac" name="mac" type="hidden" value="{{ mac }}"></p>
 </form>
 {% endblock %}

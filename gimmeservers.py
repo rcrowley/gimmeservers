@@ -106,6 +106,10 @@ def api_destroy():
 
     if 'rax' != request.form['provider']:
         return _api_error(400, 'Provider must be "rax".')
+    if _mac(request.form['provider'],
+            request.form['id'],
+            request.form['ip']) != request.form['mac']:
+        return _api_error(403, 'Signature mismatch.')
 
     Driver = get_driver(Provider.RACKSPACE)
     try:
@@ -133,11 +137,13 @@ def page_create():
 def page_destroy(provider, id, ip, mac):
     if _mac(provider, id, ip) != mac:
         return render_template('404.html'), 404
-    ip = socket.inet_ntoa(struct.pack('L', long(ip)))
+    unpacked_ip = socket.inet_ntoa(struct.pack('L', long(ip)))
     return render_template('destroy.html',
                            provider=provider,
                            id=id,
-                           ip=ip)
+                           ip=ip,
+                           unpacked_ip=unpacked_ip,
+                           mac=mac)
 
 if '__main__' == __name__:
     app.run(host='0.0.0.0')
