@@ -1,19 +1,35 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-<meta charset="utf-8"> 
-<title>Gimme Servers</title> 
-<link type="text/css" rel="stylesheet" href="/css/base.css" /> 
-</head> 
-<body> 
-<header><h1><a href="/">Gimme Servers</a></h1></header> 
-<section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gimme Servers</title>
+<link type="text/css" rel="stylesheet" href="/static/css/base.css" />
+</head>
+<body>
+<div>
+<header><h1><a href="/">Gimme Servers</a></h1></header>
 {% block content %}
 {% endblock %}
-</section>
+<aside>
+	<p>TODO <a href="http://devstructure.com/">DevStructure</a> ad.</p>
+</aside>
+</div>
 <footer>
 	<p>Rage put to good use by <a href="http://rcrowley.org/">Richard Crowley</a>.</p>
-</footer> 
-</body> 
-</html> 
- 
+</footer>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	if (window.localStorage) {
+		["username", "api-key", "image", "size"].forEach(function(id) {
+			var val = localStorage.getItem(id);
+			if (val) { $("#" + id).val(val); }
+		});
+		$("#username, #api-key, #image, #size").change(function() {
+			localStorage.setItem(this.id, $(this).val());
+		});
+	}
+});
+</script>
+</body>
+</html>

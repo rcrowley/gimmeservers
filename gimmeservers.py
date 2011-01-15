@@ -84,7 +84,7 @@ def api_create():
 
     Driver = get_driver(Provider.RACKSPACE)
     try:
-        conn = Driver(request.form['username'], request.form['api_key']) 
+        conn = Driver(request.form['username'], request.form['api-key'])
     except InvalidCredsError:
         return _api_error(401, 'Invalid credentials.')
 
@@ -109,7 +109,7 @@ def api_destroy():
 
     Driver = get_driver(Provider.RACKSPACE)
     try:
-        conn = Driver(request.form['username'], request.form['api_key']) 
+        conn = Driver(request.form['username'], request.form['api-key'])
     except InvalidCredsError:
         return _api_error(401, 'Invalid credentials.')
 
