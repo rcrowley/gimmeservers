@@ -21,11 +21,11 @@
 <script type="text/javascript">
 $(function() {
 	if (window.localStorage) {
-		["username", "api-key", "image", "size"].forEach(function(id) {
+		["username", "apikey", "image", "size"].forEach(function(id) {
 			var val = localStorage.getItem(id);
 			if (val) { $("#" + id).val(val); }
 		});
-		$("#username, #api-key, #image, #size").change(function() {
+		$("#username, #apikey, #image, #size").change(function() {
 			localStorage.setItem(this.id, $(this).val());
 		});
 	}

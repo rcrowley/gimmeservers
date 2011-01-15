@@ -5,7 +5,7 @@
 <p><label>Server IP address:</label><strong>{{ unpacked_ip }}</strong></p>
 <p><label for="id">Server ID:</label><strong>{{ id }}</strong></p>
 <p><label for="username">Rackspace username:</label><input id="username" name="username" type="text"></p>
-<p><label for="api-key">Rackspace API key:</label><input id="api-key" name="api-key" type="text"></p>
+<p><label for="apikey">Rackspace API key:</label><input id="apikey" name="apikey" type="text"></p>
 <p><input type="submit" value="Destroy this server and all the data on it" class="destroy"></p>
 <input id="provider" name="provider" type="hidden" value="{{ provider }}">
 <input id="id" name="id" type="hidden" value="{{ id }}">
@@ -21,7 +21,7 @@ $(function() {
 		$("h1").append(" <img id=\"spin\" src=\"/static/img/spin.gif\">");
 		$.ajax({
 			data: {
-				"api-key": $("#api-key").val(),
+				"apikey": $("#apikey").val(),
 				"id": $("#id").val(),
 				"ip": $("#ip").val(),
 				"mac": $("#mac").val(),
