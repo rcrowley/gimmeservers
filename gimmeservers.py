@@ -22,9 +22,6 @@ class Dummy(object):
     def __init__(self, id=None):
         self.id = id
 
-def _conn(username, api_key):
-    pass
-
 IMAGES = [(69, 'Ubuntu 10.10 (maverick)'),
           (49, 'Ubuntu 10.04 LTS (lucid)'),
           (4, 'Debian 5.0 (lenny)'),
@@ -38,22 +35,6 @@ SIZES = [(1, '256 server'),
          (5, '4GB server'),
          (6, '8GB server'),
          (7, '15.5GB server')]
-
-def _image(conn, image_id):
-    image_id = int(image_id)
-    images = conn.list_images()
-    for image in images:
-        if int(image.id) == image_id:
-            return image
-    raise KeyError
-
-def _size(conn, size_id):
-    size_id = int(size_id)
-    sizes = conn.list_sizes()
-    for size in sizes:
-        if int(size.id) == size_id:
-            return size
-    raise KeyError
 
 def _mac(provider, id, ip):
     return hmac.new(SECRET,
@@ -97,6 +78,7 @@ def api_create():
                             image=Dummy(request.form['image']),
                             size=Dummy(request.form['size']))
 
+    logger.info('200')
     return jsonify(ip=node.public_ip[0],
                    password=node.extra['password'],
                    provider=request.form['provider'],
@@ -128,6 +110,7 @@ def api_destroy():
             return _api_error(404, 'Invalid id.')
         raise e
 
+    logger.info('204')
     return Response(status=204)
 
 @app.route('/', methods=['GET'])
@@ -140,6 +123,7 @@ def page_create():
 @app.route('/<provider>-<id>-<ip>-<mac>', methods=['GET'])
 def page_destroy(provider, id, ip, mac):
     if _mac(provider, id, ip) != mac:
+        logger.info('404')
         return render_template('404.html'), 404
     unpacked_ip = socket.inet_ntoa(struct.pack('I', long(ip)))
     return render_template('destroy.html',
