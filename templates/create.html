@@ -52,6 +52,14 @@ $(function() {
 					"<hr>" +
 					"<p><a href=\"/\">Gimme another server</a></p>"
 				);
+				if (window.localStorage) {
+					localStorage.setItem("ip." + data.id, data.ip);
+					localStorage.setItem("url." + data.id, data.url);
+					var ids = localStorage.getItem("ids");
+					ids = ids ? ids.split(",") : [];
+					ids.push(data.id);
+					localStorage.setItem("ids", ids);
+				}
 			},
 			type: "POST",
 			url: $(this).attr("action")

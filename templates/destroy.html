@@ -41,6 +41,16 @@ $(function() {
 					"<hr>" +
 					"<p><a href=\"/\">Gimme another server</a></p>"
 				);
+				if (window.localStorage) {
+					localStorage.removeItem("ip." + id);
+					localStorage.removeItem("url." + id);
+					var ids = localStorage["ids"];
+					ids = ids ? ids.split(",") : [];
+					for (i in ids) {
+						if (ids[i] == id) { delete ids[i]; }
+					}
+					localStorage.setItem("ids", ids);
+				}
 			},
 			type: "POST",
 			url: $(this).attr("action")

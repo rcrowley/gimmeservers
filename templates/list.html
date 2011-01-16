@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>These servers have been created from this computer.</p>
+<ul>
+</ul>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+$(function() {
+	if (window.localStorage) {
+		spin();
+		var ids = localStorage["ids"];
+		ids = ids ? ids.split(",") : [];
+		ids.forEach(function(id) {
+			$("ul").append(
+				"<li><a href=\"" + localStorage.getItem("url." + id) +
+				"\">" + localStorage.getItem("ip." + id) + "</a></li>"
+			);
+		});
+		unspin();
+	}
+});
+</script>
+{% endblock %}
