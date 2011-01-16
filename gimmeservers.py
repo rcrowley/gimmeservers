@@ -3,6 +3,7 @@ import hashlib
 import hmac
 from libcloud.types import InvalidCredsError, Provider
 from libcloud.providers import get_driver
+import logging
 import os
 import socket
 import struct
