@@ -11,6 +11,8 @@ DEBUG = 'GIMMESERVERS_VIA' not in os.environ
 
 SECRET = 'This is my secret.  There are many like it but this one is mine.'
 
+logger = logging.getLogger('gunicorn')
+
 class Dummy(object):
     """
     Use this class in places where an object with an id attribute is needed
@@ -70,6 +72,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 def _api_error(status_code, error):
+    logger.info('{0} {1}'.format(status_code, error))
     response = jsonify(error=error)
     response.status_code = status_code
     return response
