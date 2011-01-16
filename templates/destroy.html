@@ -18,11 +18,12 @@
 <script type="text/javascript">
 $(function() {
 	$("form").submit(function() {
-		$("h1").append(" <img id=\"spin\" src=\"/static/img/spin.gif\">");
+		spin();
+		var id = $("#id").val();
 		$.ajax({
 			data: {
 				"apikey": $("#apikey").val(),
-				"id": $("#id").val(),
+				"id": id,
 				"ip": $("#ip").val(),
 				"mac": $("#mac").val(),
 				"provider": $("#provider").val(),
@@ -30,11 +31,11 @@ $(function() {
 			},
 			dataType: "json",
 			error: function(xhr, textStatus, errorThrown) {
-				$("#spin").remove();
+				unspin();
 				alert($.parseJSON(xhr.responseText).error);
 			},
 			success: function(data, textStatus, xhr) {
-				$("#spin").remove();
+				unspin();
 				$("form").empty().append(
 					"<p><strong>{{ unpacked_ip }}</strong> has been destroyed.</p>" +
 					"<hr>" +

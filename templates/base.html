@@ -19,6 +19,12 @@
 </footer>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
+function spin() {
+	$("h1").append(" <img id=\"spin\" src=\"/static/img/spin.gif\">");
+}
+function unspin() {
+	$("#spin").remove();
+}
 $(function() {
 	if (window.localStorage) {
 		["username", "apikey", "image", "size"].forEach(function(id) {
