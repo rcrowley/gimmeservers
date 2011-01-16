@@ -74,9 +74,14 @@ def api_create():
         return _api_error(401, 'Invalid credentials.')
 
     # TODO What exceptions can this throw?
-    node = conn.create_node(name=request.form['name'],
-                            image=Dummy(request.form['image']),
-                            size=Dummy(request.form['size']))
+    try:
+        node = conn.create_node(name=request.form['name'],
+                                image=Dummy(request.form['image']),
+                                size=Dummy(request.form['size']))
+    except Exception as e:
+        if '400' == str(e)[0:3]:
+            return _api_error(422, str(e))
+        raise e
 
     logger.info('200')
     return jsonify(ip=node.public_ip[0],
@@ -132,6 +137,10 @@ def page_destroy(provider, id, ip, mac):
                            ip=ip,
                            unpacked_ip=unpacked_ip,
                            mac=mac)
+
+@app.route('/list', methods=['GET'])
+def page_list():
+    return render_template('list.html')
 
 if '__main__' == __name__:
     app.run(host='0.0.0.0')
