@@ -1,7 +1,7 @@
 from fabric.api import *
 
 env.hosts = ['gimmeservers.com']
-env.key_filename = '/home/vagrant/.ssh/id_rsa'
+env.key_filename = '/home/rcrowley/.ssh/id_rsa'
 env.user = 'root'
 
 def deploy():
