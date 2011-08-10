@@ -22,10 +22,13 @@ class Dummy(object):
     def __init__(self, id=None):
         self.id = id
 
-IMAGES = [(69, 'Ubuntu 10.10 (maverick)'),
-          (49, 'Ubuntu 10.04 LTS (lucid)'),
-          (4, 'Debian 5.0 (lenny)'),
+IMAGES = [(76, 'Ubuntu 11.04 (Natty Narwhal)'),
+          (69, 'Ubuntu 10.10 (Maverick Meerkat)'),
+          (49, 'Ubuntu 10.04 LTS (Lucid Lynx)'),
+          (75, 'Debian 6.0 (Squeeze)'),
+          (4, 'Debian 5.0 (Lenny)'),
           (51, 'CentOS 5.5'),
+          (78, 'Fedora 15'),
           (71, 'Fedora 14')]
 
 SIZES = [(1, '256 server'),
