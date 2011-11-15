@@ -27,6 +27,7 @@ IMAGES = [(76, 'Ubuntu 11.04 (Natty Narwhal)'),
           (49, 'Ubuntu 10.04 LTS (Lucid Lynx)'),
           (75, 'Debian 6.0 (Squeeze)'),
           (4, 'Debian 5.0 (Lenny)'),
+          (114, 'CentOS 5.6'),
           (51, 'CentOS 5.5'),
           (78, 'Fedora 15'),
           (71, 'Fedora 14')]
